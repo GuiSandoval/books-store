@@ -2,17 +2,12 @@ import React from 'react'
 import { ThemeProvider } from "styled-components";
 
 import { Home } from './pages/Home'
-import { GlobalStyle } from './global';
-
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-}
+import { GlobalStyle } from './styles/global';
+import { defaultTheme } from './styles/themes';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={defaultTheme}>
       <Home />
       <GlobalStyle />
     </ThemeProvider>

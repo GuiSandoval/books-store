@@ -1,9 +1,11 @@
 import React from 'react'
 import * as S from './styles';
+import { IBook } from '../../interfaces/boook';
+import { BookCard } from '../BookCard';
 
 interface IBooksSectionProps {
   title: string;
-  books: any[]
+  books?: IBook[];
 }
 
 function BooksSection({ title, books }: IBooksSectionProps) {
@@ -11,7 +13,12 @@ function BooksSection({ title, books }: IBooksSectionProps) {
     <S.Container>
       <h3>{title}</h3>
       <S.AreaBooks>
-        area do livro
+        {books?.map(book => (
+          <BookCard key={book.id}
+            id={book.id}
+            image={book.image}
+          />
+        ))}
       </S.AreaBooks>
 
     </S.Container>

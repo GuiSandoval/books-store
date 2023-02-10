@@ -2,18 +2,15 @@ import React from 'react'
 import { DefaultLayout } from '../../layouts/DefaultLayout'
 import { BooksSection } from '../../components/BooksSection'
 import * as S from './styles';
+import { useBooks } from '../../services/hooks/useBooks';
 
 function Home() {
-  const books = [
-    {
-      id: 1,
-      title: 'O Senhor dos Anéis',
-    },
-    {
-      id: 2,
-      title: 'Harry Potter e a Pedra Filosofal',
-    },
-  ]
+  const { data: books } = useBooks('adventures');
+  console.log("executou aqui ")
+
+  if (!books) {
+    return <p>Carregando...</p>
+  }
 
   return (
     <S.Container>

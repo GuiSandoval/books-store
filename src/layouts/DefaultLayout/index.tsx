@@ -1,18 +1,15 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom';
 
-import * as S from './styles';
 import { Header } from '../../components/Header';
+import * as S from './styles';
 
-interface DefaultLayoutProps {
-  children: React.ReactNode
-}
-
-function DefaultLayout({ children }: DefaultLayoutProps) {
+function DefaultLayout() {
   return (
     <S.Container>
       <Header />
       <S.Content>
-        {children}
+        <Outlet />
       </S.Content>
     </S.Container>
   )

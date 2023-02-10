@@ -17,7 +17,7 @@ export const Container = styled.section`
   }
 
   > p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: ${({ theme }) => theme["tea-dark-1"]};
   }

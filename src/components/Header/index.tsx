@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 
+import ImageProfile from '../../assets/images/profile.jpg';
 import { LogoIcon, SearchIcon } from '../../common/icons';
+
+import { ProfileSection } from '../ProfileSection';
 import * as S from './styles';
 
 function Header() {
@@ -28,7 +31,7 @@ function Header() {
 
       </S.SearchForm>
 
-      <div>Perfil</div>
+      <ProfileSection image="foto-perfil.jpg" name='Guilherme' />
     </S.Container >
   )
 }

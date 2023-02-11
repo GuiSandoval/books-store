@@ -2,6 +2,7 @@ import React from 'react'
 import * as S from './styles';
 import { IBook } from '../../interfaces/boook';
 import { BookCard } from '../BookCard';
+import { Carousel } from '../../common/Carousel';
 
 interface IBooksSectionProps {
   title: string;
@@ -13,12 +14,14 @@ function BooksSection({ title, books }: IBooksSectionProps) {
     <S.Container>
       <h3>{title}</h3>
       <S.AreaBooks>
-        {books?.map(book => (
-          <BookCard key={book.id}
-            id={book.id}
-            image={book.image}
-          />
-        ))}
+        <Carousel>
+          {books?.map(book => (
+            <BookCard key={book.id}
+              id={book.id}
+              image={book.image}
+            />
+          ))}
+        </Carousel>
       </S.AreaBooks>
 
     </S.Container>

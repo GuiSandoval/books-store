@@ -1,17 +1,25 @@
 import React from 'react'
 
 interface IArrowIconProps {
-  position?: 'top' | 'bottom' | 'left' | 'right';
+  direction?: 'top' | 'bottom' | 'left' | 'right';
   color?: string;
   width?: string;
 }
 
-function ArrowIcon({ position, color, width }: IArrowIconProps) {
+function ArrowIcon({ direction, color, width }: IArrowIconProps) {
+  const directionMap = {
+    top: '180deg',
+    bottom: '0deg',
+    left: '90deg',
+    right: '270deg'
+  }
+
   return (
     <svg
       width={width || "16"}
       viewBox="0 0 12 8"
       fill="none"
+      style={{ transform: `rotate(${directionMap[direction || 'bottom']})` }}
       xmlns="http://www.w3.org/2000/svg">
       <path
         fillRule="evenodd"

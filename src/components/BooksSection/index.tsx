@@ -1,15 +1,23 @@
 import React from 'react'
-import * as S from './styles';
-import { IBook } from '../../interfaces/boook';
-import { BookCard } from '../BookCard';
+
 import { Carousel } from '../../common/Carousel';
+import { useBooksCategory } from '../../services/hooks/useBooks';
+import { BookCard } from '../BookCard';
+import * as S from './styles';
 
 interface IBooksSectionProps {
   title: string;
-  books?: IBook[];
+  category: string;
 }
 
-function BooksSection({ title, books }: IBooksSectionProps) {
+function BooksSection({ title, category }: IBooksSectionProps) {
+  if (!category) return null;
+  const { data: books, isLoading } = useBooksCategory(category);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
   return (
     <S.Container>
       <h3>{title}</h3>

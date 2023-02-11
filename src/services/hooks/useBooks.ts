@@ -28,7 +28,7 @@ async function getBooks(category: string): Promise<IBook[]> {
   return formattedData;
 }
 
-export function useBooks(category: string) {
+export function useBooksCategory(category: string) {
   return useQuery(["books", category], () => getBooks(category), {
     staleTime: Infinity,
   });

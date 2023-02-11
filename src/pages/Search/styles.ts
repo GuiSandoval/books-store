@@ -34,3 +34,9 @@ export const BooksList = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
 `;
+
+export const ObserverInfiniteScroll = styled.div`
+  background: red;
+  width: 100%;
+  height: 5rem;
+`;

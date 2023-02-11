@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSearch } from '../../contexts/SearchContext';
 import { useBooks } from '../../services/hooks/useBooks';
 
 import * as S from './styles';
 import { BookCard } from '../../components/BookCard';
 import { CheckboxInput } from '../../common/CheckboxInput';
+import { IBook } from '../../interfaces/boook';
 
 function Search() {
+  console.log("executou aqui")
   const { searchValue } = useSearch();
-  const { data, isLoading } = useBooks(searchValue);
+  const { data, isLoading, hasNextPage, fetchNextPage } = useBooks(searchValue);
+  const [books, setBooks] = useState<IBook[]>([]);
   const [filterValues, setFilterValues] = useState({
     price0To30: false,
     price31To50: false,
@@ -20,8 +23,6 @@ function Search() {
     pdf: false,
   });
 
-  if (isLoading) return <div>Loading...</div>
-
   function handleFilter(e: React.ChangeEvent<HTMLInputElement>) {
     const { value, checked } = e.currentTarget;
 
@@ -30,6 +31,38 @@ function Search() {
       [value]: checked,
     }));
   }
+  function refetchBooks() {
+    fetchNextPage();
+  }
+
+  useEffect(() => {
+    if (isLoading) return;
+
+    const dataFormatted = data?.pages.reduce((acc, page) => {
+      return [...acc, ...page];
+    }, []);
+
+    setBooks(dataFormatted);
+
+  }, [isLoading, data]);
+
+  useEffect(() => {
+    if (isLoading) return;
+
+    const intersectionObserver = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        console.log('Intersecting');
+        refetchBooks();
+      }
+    }
+    );
+
+    intersectionObserver.observe(document.querySelector('#observerDiv')!);
+
+    return () => intersectionObserver.disconnect();
+  }, [isLoading])
+
+  if (isLoading) return <div>Loading...</div>
 
   return (
     <S.Container>
@@ -50,7 +83,7 @@ function Search() {
       <S.AreaBooks>
         <h4>Resultados para "{searchValue}":</h4>
         <S.BooksList>
-          {data?.map(book => (
+          {books?.map(book => (
             <BookCard
               key={book.id}
               id={book.id}
@@ -59,6 +92,7 @@ function Search() {
               title={book.title}
             />
           ))}
+          <S.ObserverInfiniteScroll id="observerDiv" />
         </S.BooksList>
       </S.AreaBooks>
     </S.Container>

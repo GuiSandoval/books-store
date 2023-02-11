@@ -1,15 +1,15 @@
-import { useQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import { apiUrl } from "../apiUrl";
 import { IBook } from "../../interfaces/boook";
 
 // https://www.googleapis.com/books/v1/volumes?q=a+subject:adventure&startIndex=0&maxResults=10
 
-async function getBooks(query: string): Promise<IBook[]> {
+async function getBooks(query: string, pageParam: number): Promise<IBook[]> {
   const { data } = await apiUrl.get("/volumes", {
     params: {
       q: query,
-      startIndex: 0,
-      maxResults: 10,
+      startIndex: pageParam,
+      maxResults: 40,
     },
   });
 
@@ -55,7 +55,14 @@ export function useBooksCategory(category: string) {
   );
 }
 export function useBooks(query: string) {
-  return useQuery(["books", query], () => getBooks(query), {
-    staleTime: Infinity,
-  });
+  return useInfiniteQuery(
+    ["books", query],
+    ({ pageParam = 0 }) => getBooks(query, pageParam),
+    {
+      staleTime: Infinity,
+      getNextPageParam: (lastPage, pages) => {
+        return lastPage.length ? pages.length * 40 : false;
+      },
+    }
+  );
 }

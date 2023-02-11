@@ -14,7 +14,6 @@ export const FilterAside = styled.aside`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background: red;
   width: 30%;
 `;
 

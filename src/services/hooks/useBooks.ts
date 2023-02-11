@@ -59,6 +59,7 @@ export function useBooks(query: string) {
     ["books", query],
     ({ pageParam = 0 }) => getBooks(query, pageParam),
     {
+      enabled: false,
       staleTime: Infinity,
       getNextPageParam: (lastPage, pages) => {
         return lastPage.length ? pages.length * 40 : false;

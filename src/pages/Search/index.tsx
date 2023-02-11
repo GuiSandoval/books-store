@@ -6,12 +6,10 @@ import * as S from './styles';
 import { BookCard } from '../../components/BookCard';
 import { CheckboxInput } from '../../common/CheckboxInput';
 import { IBook } from '../../interfaces/boook';
+import { BooksList } from './BooksList';
 
 function Search() {
-  console.log("executou aqui")
   const { searchValue } = useSearch();
-  const { data, isLoading, hasNextPage, fetchNextPage } = useBooks(searchValue);
-  const [books, setBooks] = useState<IBook[]>([]);
   const [filterValues, setFilterValues] = useState({
     price0To30: false,
     price31To50: false,
@@ -31,38 +29,6 @@ function Search() {
       [value]: checked,
     }));
   }
-  function refetchBooks() {
-    fetchNextPage();
-  }
-
-  useEffect(() => {
-    if (isLoading) return;
-
-    const dataFormatted = data?.pages.reduce((acc, page) => {
-      return [...acc, ...page];
-    }, []);
-
-    setBooks(dataFormatted);
-
-  }, [isLoading, data]);
-
-  useEffect(() => {
-    if (isLoading) return;
-
-    const intersectionObserver = new IntersectionObserver(entries => {
-      if (entries.some(entry => entry.isIntersecting)) {
-        console.log('Intersecting');
-        refetchBooks();
-      }
-    }
-    );
-
-    intersectionObserver.observe(document.querySelector('#observerDiv')!);
-
-    return () => intersectionObserver.disconnect();
-  }, [isLoading])
-
-  if (isLoading) return <div>Loading...</div>
 
   return (
     <S.Container>
@@ -82,18 +48,7 @@ function Search() {
       </S.FilterAside>
       <S.AreaBooks>
         <h4>Resultados para "{searchValue}":</h4>
-        <S.BooksList>
-          {books?.map(book => (
-            <BookCard
-              key={book.id}
-              id={book.id}
-              image={book.image}
-              author={book.author}
-              title={book.title}
-            />
-          ))}
-          <S.ObserverInfiniteScroll id="observerDiv" />
-        </S.BooksList>
+        <BooksList />
       </S.AreaBooks>
     </S.Container>
   )

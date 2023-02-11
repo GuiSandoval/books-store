@@ -26,17 +26,3 @@ export const AreaBooks = styled.div`
     margin-bottom: 1rem;
   }
 `;
-
-export const BooksList = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-`;
-
-export const ObserverInfiniteScroll = styled.div`
-  background: red;
-  width: 100%;
-  height: 5rem;
-`;

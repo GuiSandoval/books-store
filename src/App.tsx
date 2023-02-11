@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { Router } from './Router'
 import { defaultTheme } from './styles/themes';
 import { GlobalStyle } from './styles/global';
+import { SearchProvider } from './contexts/SearchContext';
 
 function App() {
   const queryClient = new QueryClient();
@@ -14,7 +15,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={defaultTheme}>
         <BrowserRouter>
-          <Router />
+          <SearchProvider>
+            <Router />
+          </SearchProvider>
         </BrowserRouter>
         <GlobalStyle />
       </ThemeProvider >

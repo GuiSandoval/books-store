@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import ImageProfile from '../../assets/images/profile.jpg';
 import { LogoIcon, SearchIcon } from '../../common/icons';
 
 import { ProfileSection } from '../ProfileSection';
 import * as S from './styles';
+import { useSearch } from '../../contexts/SearchContext';
 
 function Header() {
-  const [search, setSearch] = useState('');
-  const redirect = useNavigate();
+  const { searchValue, setSearchValue } = useSearch();
+  const [search, setSearch] = useState(searchValue || '');
+  const navigate = useNavigate();
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(search);
-    setSearch('');
-    redirect('/search');
+    setSearchValue(search)
+    navigate({ pathname: '/search', search: `?q=${search}` }, { replace: true })
   }
 
   return (

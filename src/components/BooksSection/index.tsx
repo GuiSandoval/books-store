@@ -13,16 +13,16 @@ function BooksSection({ title, books }: IBooksSectionProps) {
   return (
     <S.Container>
       <h3>{title}</h3>
-      <S.AreaBooks>
-        <Carousel>
+      <Carousel>
+        <S.AreaBooks>
           {books?.map(book => (
             <BookCard key={book.id}
               id={book.id}
               image={book.image}
             />
           ))}
-        </Carousel>
-      </S.AreaBooks>
+        </S.AreaBooks>
+      </Carousel>
 
     </S.Container>
   )

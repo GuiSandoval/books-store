@@ -9,4 +9,5 @@ export const Container = styled.div`
 export const AreaBooks = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 1rem;
 `;

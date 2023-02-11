@@ -9,9 +9,6 @@ import { CheckboxInput } from '../../common/CheckboxInput';
 function Search() {
   const { searchValue } = useSearch();
   const { data, isLoading } = useBooks(searchValue);
-
-  if (isLoading) return <div>Loading...</div>
-
   const [filterValues, setFilterValues] = useState({
     price0To30: false,
     price31To50: false,
@@ -22,6 +19,8 @@ function Search() {
     epub: false,
     pdf: false,
   });
+
+  if (isLoading) return <div>Loading...</div>
 
   function handleFilter(e: React.ChangeEvent<HTMLInputElement>) {
     const { value, checked } = e.currentTarget;
@@ -48,10 +47,20 @@ function Search() {
         <CheckboxInput labelText='e-pub' value={'epub'} onChange={handleFilter} />
         <CheckboxInput labelText='PDF' value={'pdf'} onChange={handleFilter} />
       </S.FilterAside>
-      <S.BooksList>
+      <S.AreaBooks>
         <h4>Resultados para "{searchValue}":</h4>
-        <p>Lista aqui</p>
-      </S.BooksList>
+        <S.BooksList>
+          {data?.map(book => (
+            <BookCard
+              key={book.id}
+              id={book.id}
+              image={book.image}
+              author={book.author}
+              title={book.title}
+            />
+          ))}
+        </S.BooksList>
+      </S.AreaBooks>
     </S.Container>
   )
 }

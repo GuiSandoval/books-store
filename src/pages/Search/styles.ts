@@ -17,7 +17,20 @@ export const FilterAside = styled.aside`
   width: 30%;
 `;
 
-export const BooksList = styled.div`
-  background: blue;
+export const AreaBooks = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 70%;
+
+  > h4 {
+    margin-bottom: 1rem;
+  }
+`;
+
+export const BooksList = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
 `;

@@ -5,9 +5,10 @@ export const Container = styled.label`
   flex-direction: row;
   cursor: pointer;
 
-  color: ${({ theme }) => theme["tea-dark-2"]};
-  font-size: 1rem;
+  color: ${({ theme }) => theme["tea-dark-1"]};
+  font-size: 0.8rem;
   font-weight: 500;
+  user-select: none;
 
   > input {
     display: flex;
@@ -15,7 +16,7 @@ export const Container = styled.label`
     justify-content: center;
 
     background: transparent;
-    border: 1px solid ${({ theme }) => theme["tea-dark-2"]};
+    border: 1px solid ${({ theme }) => theme["tea-dark-1"]};
     border-radius: 4px;
     cursor: pointer;
     vertical-align: middle;
@@ -31,8 +32,8 @@ export const Container = styled.label`
     }
 
     &:checked {
-      background: ${({ theme }) => theme["tea-dark-2"]};
-      border-color: ${({ theme }) => theme["tea-dark-2"]};
+      background: ${({ theme }) => theme["tea-dark-1"]};
+      border-color: ${({ theme }) => theme["tea-dark-1"]};
 
       &:after {
         content: "✓";

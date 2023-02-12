@@ -21,7 +21,7 @@ function FilterAside() {
   return (
     <S.Container>
       <h4>Filtrar</h4>
-      {hasFilterSelected && <button type='button' onClick={handleClearFilter}>Limpar Filtro</button>}
+      {hasFilterSelected && <S.ClearButton type='button' onClick={handleClearFilter}>Limpar Filtro</S.ClearButton>}
       <p>Preço</p>
       <CheckboxInput labelText='de R$0 até R$30' value={'price0To30'} onChange={handleFilter} checked={filterValues.price0To30} />
       <CheckboxInput labelText='de R$31 até R$50' value={'price31To50'} onChange={handleFilter} checked={filterValues.price31To50} />

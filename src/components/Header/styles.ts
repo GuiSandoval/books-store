@@ -5,7 +5,7 @@ export const Container = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0.8rem 0;
 `;
 
 export const SearchForm = styled.form`

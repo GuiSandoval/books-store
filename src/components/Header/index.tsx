@@ -18,9 +18,15 @@ function Header() {
     navigate({ pathname: '/search', search: `?q=${search}` }, { replace: true })
   }
 
+  function handleHome() {
+    console.log("executou aqui mt loko")
+    setSearch('')
+    navigate({ pathname: '/' }, { replace: true })
+  }
+
   return (
     <S.Container>
-      <Link to='/'>
+      <Link to='/' onClick={handleHome}>
         <LogoIcon />
       </Link>
       <S.SearchForm onSubmit={handleSearch}>

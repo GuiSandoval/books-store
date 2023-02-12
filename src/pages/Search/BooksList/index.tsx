@@ -8,7 +8,6 @@ import { useBookSearch } from '../../../hooks/useBookSearch';
 import { IBookSearch } from '../../../interfaces/boook';
 
 function BooksList() {
-  console.log('executou aqui dnv')
   const { queryBooks, booksFiltered } = useBookSearch();
   const { data, fetchNextPage, isFetchingNextPage, isLoading } = queryBooks;
 

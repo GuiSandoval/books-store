@@ -18,7 +18,6 @@ const SearchContext = createContext<ISearchContext>({
 function SearchProvider({ children }: ISearchProvider) {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
-  console.log(queryParams)
   const searchParam = queryParams.get("q") || "";
 
   const [searchValue, setSearchValue] = useState(searchParam);

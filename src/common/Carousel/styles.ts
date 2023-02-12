@@ -35,7 +35,8 @@ export const ArrowButton = styled.button<IArrowButtonProps>`
   padding: 0 0.4rem;
   z-index: 10;
 
-  @media (min-width: 768px) {
+  /* Responsive Tablet */
+  @media (min-width: 1024px) {
     background: none;
 
     > svg {

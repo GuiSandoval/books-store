@@ -37,3 +37,25 @@ export const SearchButton = styled.button`
 
   cursor: pointer;
 `;
+
+export const NotificationIcon = styled.div`
+  position: relative;
+  margin: 0 0.8rem;
+
+  :after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: ${({ theme }) => theme["danger"]};
+    border-radius: 50%;
+    border: 2px solid ${({ theme }) => theme["white-1"]};
+  }
+
+  /* Tablet responsive */
+  @media (min-width: 1024px) {
+    display: none;
+  }
+`;

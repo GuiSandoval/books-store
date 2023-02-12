@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { LogoIcon, SearchIcon } from '../../common/icons';
+import { LogoIcon, NotificationIcon, SearchIcon } from '../../common/icons';
 
 import { ProfileSection } from '../ProfileSection';
 import * as S from './styles';
@@ -41,7 +41,9 @@ function Header() {
         </S.SearchButton>
 
       </S.SearchForm>
-
+      <S.NotificationIcon>
+        <NotificationIcon />
+      </S.NotificationIcon>
       <ProfileSection image="foto-perfil.jpg" name='Guilherme' />
     </S.Container >
   )

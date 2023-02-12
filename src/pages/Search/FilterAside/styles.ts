@@ -20,17 +20,15 @@ export const Container = styled.aside`
 `;
 
 export const ClearButton = styled.button`
-  position: relative;
   background: ${({ theme }) => theme["ice-blue-1"]};
   color: ${({ theme }) => theme["white"]};
   border: none;
   border-radius: 10px;
   cursor: pointer;
   text-transform: uppercase;
-  /* font-size: 0.75rem; */
-  padding: 0.8rem 1rem;
-  width: 100%;
-  max-width: 14rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.8rem 1.2rem;
   margin-bottom: 1rem;
   transition: all 0.2s;
 
@@ -41,9 +39,13 @@ export const ClearButton = styled.button`
   /* create after element with x */
   &:after {
     content: "x";
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-left: 0.5rem;
+  }
+
+  /* Tablet responsive */
+  @media (max-width: 1024px) {
+    font-size: 0.6rem;
+    padding: 0.6rem 0.6rem;
+    text-align: left;
   }
 `;

@@ -21,4 +21,14 @@ export const Container = styled.section`
     font-weight: 600;
     color: ${({ theme }) => theme["tea-dark-1"]};
   }
+
+  /* Tablet Responsive */
+  @media (max-width: 1024px) {
+    max-width: 2.2rem;
+
+    > p,
+    > svg {
+      display: none;
+    }
+  }
 `;

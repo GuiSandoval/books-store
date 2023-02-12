@@ -6,6 +6,18 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem 0;
+
+  > a > div {
+    width: 10rem;
+    height: 2rem;
+    overflow: auto;
+    overflow: hidden;
+
+    > svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 export const SearchForm = styled.form`
@@ -16,6 +28,11 @@ export const SearchForm = styled.form`
   align-items: center;
   width: 100%;
   max-width: 30rem;
+
+  /* Mobile Responsive */
+  @media (max-width: 426px) {
+    display: none;
+  }
 `;
 export const SearchInput = styled.input`
   background: ${({ theme }) => theme["white-1"]};
@@ -26,7 +43,6 @@ export const SearchInput = styled.input`
   height: 2.5rem;
   width: 100%;
 `;
-
 export const SearchButton = styled.button`
   position: absolute;
   right: 1rem;
@@ -38,7 +54,21 @@ export const SearchButton = styled.button`
   cursor: pointer;
 `;
 
-export const NotificationIcon = styled.div`
+export const AreaProfile = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  max-width: 11.6rem;
+
+  /* Table Responsive */
+  @media (max-width: 1024px) {
+    max-width: 8rem;
+  }
+`;
+
+export const AreaNotification = styled.div`
   position: relative;
   margin: 0 0.8rem;
 

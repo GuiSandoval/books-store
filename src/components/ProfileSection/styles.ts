@@ -5,8 +5,6 @@ export const Container = styled.section`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 11.6rem;
 
   > img {
     display: block;
@@ -24,8 +22,6 @@ export const Container = styled.section`
 
   /* Tablet Responsive */
   @media (max-width: 1024px) {
-    max-width: 2.2rem;
-
     > p,
     > svg {
       display: none;

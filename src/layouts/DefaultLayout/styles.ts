@@ -8,6 +8,15 @@ export const Container = styled.div`
   min-height: 100vh;
   width: 100%;
   max-width: 80rem;
+
+  /* Tablet Responsive */
+  @media (max-width: 1024px) {
+    padding: 0 2rem;
+  }
+  /* Mobile Responsive */
+  @media (max-width: 321px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const Content = styled.div``;

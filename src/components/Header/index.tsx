@@ -27,7 +27,10 @@ function Header() {
   return (
     <S.Container>
       <Link to='/' onClick={handleHome}>
-        <LogoIcon />
+
+        <div>
+          <LogoIcon />
+        </div>
       </Link>
       <S.SearchForm onSubmit={handleSearch}>
         <S.SearchInput
@@ -41,10 +44,13 @@ function Header() {
         </S.SearchButton>
 
       </S.SearchForm>
-      <S.NotificationIcon>
-        <NotificationIcon />
-      </S.NotificationIcon>
-      <ProfileSection image="foto-perfil.jpg" name='Guilherme' />
+
+      <S.AreaProfile>
+        <S.AreaNotification>
+          <NotificationIcon />
+        </S.AreaNotification>
+        <ProfileSection image="foto-perfil.jpg" name='Guilherme' />
+      </S.AreaProfile>
     </S.Container >
   )
 }

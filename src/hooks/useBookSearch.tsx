@@ -32,13 +32,15 @@ interface ISearchValueContext {
   booksFiltered: IBookSearch[];
   filterValues: IFilterValues;
   updateFilterValues: (value: string, checked: boolean) => void;
+  clearFilterValues: () => void;
 }
 
 const SearchValueContext = createContext<ISearchValueContext>({
   queryBooks: {},
   booksFiltered: [],
   filterValues: {},
-  updateFilterValues: () => { }
+  updateFilterValues: () => { },
+  clearFilterValues: () => { }
 } as any);
 
 
@@ -58,6 +60,20 @@ function SearchValueProvider({ children }: any) {
   });
 
 
+  function clearFilterValues() {
+    setFilterValues(prev => ({
+      ...prev,
+      price0To30: false,
+      price31To50: false,
+      price51To100: false,
+      price100: false,
+      isAvailable: false,
+      isUnavailable: false,
+      epub: false,
+      pdf: false,
+    }));
+  }
+
   function updateFilterValues(value: string, checked: boolean) {
     setFilterValues(prev => ({
       ...prev,
@@ -76,7 +92,14 @@ function SearchValueProvider({ children }: any) {
   }) as IBookSearch[];
 
   return (
-    <SearchValueContext.Provider value={{ queryBooks, booksFiltered, filterValues, updateFilterValues }}>
+    <SearchValueContext.Provider
+      value={{
+        queryBooks,
+        booksFiltered,
+        filterValues,
+        updateFilterValues,
+        clearFilterValues
+      }}>
       {children}
     </SearchValueContext.Provider>
   );

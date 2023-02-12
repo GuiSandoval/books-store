@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { ThemeProvider } from "styled-components";
 import { QueryClient, QueryClientProvider, } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -14,11 +14,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={defaultTheme}>
-        <BrowserRouter>
+        {/* Usign HashRouter to deploy and using routes in githubpages */}
+        <HashRouter>
           <SearchProvider>
             <Router />
           </SearchProvider>
-        </BrowserRouter>
+        </HashRouter>
         <GlobalStyle />
       </ThemeProvider >
       <ReactQueryDevtools />

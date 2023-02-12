@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 interface ISearchContext {
   searchValue: string;
@@ -15,7 +16,9 @@ const SearchContext = createContext<ISearchContext>({
 });
 
 function SearchProvider({ children }: ISearchProvider) {
-  const queryParams = new URLSearchParams(window.location.search);
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  console.log(queryParams)
   const searchParam = queryParams.get("q") || "";
 
   const [searchValue, setSearchValue] = useState(searchParam);

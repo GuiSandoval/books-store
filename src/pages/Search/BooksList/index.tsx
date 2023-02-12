@@ -4,10 +4,13 @@ import { BookCard } from '../../../components/BookCard';
 import { useBooks } from '../../../services/hooks/useBooks';
 import { useSearch } from '../../../contexts/SearchContext';
 import * as S from './styles';
+import { useBookSearch } from '../../../hooks/useBookSearch';
+import { IBookSearch } from '../../../interfaces/boook';
 
 function BooksList() {
-  const { searchValue } = useSearch();
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useBooks(searchValue);
+  console.log('executou aqui dnv')
+  const { queryBooks, booksFiltered } = useBookSearch();
+  const { data, fetchNextPage, isFetchingNextPage, isLoading } = queryBooks;
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver(entries => {
@@ -19,13 +22,10 @@ function BooksList() {
     return () => intersectionObserver.disconnect();
   }, [])
 
-
-  const books = data?.pages.reduce((acc, page) => ([...acc, ...page]), [])
-
   return (
     <S.Container>
       {isLoading && <p>Carregando...</p>}
-      {books?.map(book => (
+      {booksFiltered?.map(book => (
         <BookCard
           key={book.id}
           id={book.id}

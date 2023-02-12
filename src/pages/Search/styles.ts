@@ -9,14 +9,6 @@ export const Container = styled.div`
   margin-top: 2rem;
 `;
 
-export const FilterAside = styled.aside`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 30%;
-`;
-
 export const AreaBooks = styled.div`
   display: flex;
   flex-direction: column;

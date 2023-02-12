@@ -1,10 +1,13 @@
 import { useInfiniteQuery, useQuery } from "react-query";
 import { apiUrl } from "../apiUrl";
-import { IBook } from "../../interfaces/boook";
+import { IBook, IBookSearch } from "../../interfaces/boook";
 
 // https://www.googleapis.com/books/v1/volumes?q=a+subject:adventure&startIndex=0&maxResults=10
 
-async function getBooks(query: string, pageParam: number): Promise<IBook[]> {
+async function getBooks(
+  query: string,
+  pageParam: number
+): Promise<IBookSearch[]> {
   const { data } = await apiUrl.get("/volumes", {
     params: {
       q: query,
@@ -13,12 +16,24 @@ async function getBooks(query: string, pageParam: number): Promise<IBook[]> {
     },
   });
 
+  function getFormat(book: any) {
+    let allowFormats = [];
+
+    if (book.accessInfo?.pdf.isAvailable) allowFormats.push("pdf");
+    if (book.accessInfo?.epub.isAvailable) allowFormats.push("epub");
+
+    return allowFormats;
+  }
+
   const formattedData = data.items.map((book: any) => {
     return {
       id: book.id,
       title: book.volumeInfo.title,
       image: book.volumeInfo.imageLinks?.thumbnail,
       author: book.volumeInfo.authors,
+      price: book.saleInfo.listPrice?.amount,
+      isAvailable: book.saleInfo.isEbook,
+      format: getFormat(book),
     };
   });
 

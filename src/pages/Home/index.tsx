@@ -8,7 +8,7 @@ function Home() {
     <S.Container>
       <BooksSection title='Aventura' category='adventures' />
       <BooksSection title="Ação" category='action' />
-      <BooksSection title="Destaques" category='kids' />
+      <BooksSection title="Destaques" category='featured' />
       <BooksSection title="Infantil" category='kids' />
     </S.Container>
   )

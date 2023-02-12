@@ -42,9 +42,10 @@ async function getBooks(
 async function getBooksCategory(category: string): Promise<IBook[]> {
   const { data } = await apiUrl.get("/volumes", {
     params: {
-      q: `a+subject:${category}`,
+      q: category !== "featured" ? `a+subject:${category}` : "a",
       startIndex: 0,
       maxResults: 10,
+      orderBy: category === "featured" ? "newest" : "relevance",
     },
   });
 

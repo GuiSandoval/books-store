@@ -10,6 +10,8 @@ export default {
   "tea-dark-1": "#406A76",
   "tea-dark-2": "#053b4b",
 
+  purple: "#8553f4",
+
   danger: "#AB222E",
 
   "white-1": "#f1f7fc",

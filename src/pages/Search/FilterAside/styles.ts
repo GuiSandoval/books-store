@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.aside`
+interface IContainerProps {
+  isModalFilter?: boolean;
+}
+
+export const Container = styled.aside<IContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +24,7 @@ export const Container = styled.aside`
 
   /* Mobile Responsive */
   @media (max-width: 425px) {
-    display: none;
+    display: ${({ isModalFilter }) => (isModalFilter ? "flex" : "none")};
     width: 100%;
   }
 `;
@@ -53,5 +57,10 @@ export const ClearButton = styled.button`
     font-size: 0.6rem;
     padding: 0.6rem 0.6rem;
     text-align: left;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 425px) {
+    display: none;
   }
 `;

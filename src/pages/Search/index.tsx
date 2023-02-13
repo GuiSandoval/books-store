@@ -4,34 +4,43 @@ import { useSearch } from '../../contexts/SearchContext';
 import { BooksList } from './BooksList';
 import { FilterAside } from './FilterAside';
 import * as S from './styles';
-import { SearchValueProvider } from '../../hooks/useBookSearch';
+import { SearchValueProvider, useBookSearch } from '../../hooks/useBookSearch';
 import { Modal } from '../../common/Modal';
+import { ClearButton } from '../../components/ClearButton';
 
-function Search() {
+function SearchInside() {
   const { searchValue } = useSearch();
-  console.log('ta mexendo aqui')
+  const { clearFilterValues, filterValues } = useBookSearch();
 
-  function handleModalFilter() {
-    console.log("abrir modal aqui")
+  function handleClearSearch() {
+    clearFilterValues()
   }
+
+  const hasFilterSelected = Object.values(filterValues).some(Boolean);
 
   return (
     <S.Container>
-      <SearchValueProvider>
-        <FilterAside />
-        <S.AreaBooks>
-          <h4>Resultados para "{searchValue}":</h4>
-          <S.AreaFiltersMobile>
-            <button type="button" onClick={() => window.location.reload()}>Limpar Busca</button>
-            <Modal title="Filtrar" >
-              <FilterAside isModalFilter />
-            </Modal>
-          </S.AreaFiltersMobile>
-          <BooksList />
-        </S.AreaBooks>
-      </SearchValueProvider>
+      <FilterAside />
+      <S.AreaBooks>
+        <h4>Resultados para "{searchValue}":</h4>
+        <S.AreaFiltersMobile>
+          <Modal title="Filtrar" >
+            <FilterAside isModalFilter />
+          </Modal>
+          {hasFilterSelected &&
+            <ClearButton type="button" onClick={handleClearSearch}>
+              Limpar Busca
+            </ClearButton>
+          }
+        </S.AreaFiltersMobile>
+        <BooksList />
+      </S.AreaBooks>
     </S.Container >
   )
 }
+const Search = () =>
+  <SearchValueProvider>
+    <SearchInside />
+  </SearchValueProvider>
 
 export { Search }

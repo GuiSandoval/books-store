@@ -20,13 +20,15 @@ function SearchInside() {
 
   return (
     <S.Container>
-      <FilterAside />
+      <S.AreaFilters>
+        <h4>Filtrar</h4>
+        <FilterAside />
+      </S.AreaFilters>
+
       <S.AreaBooks>
         <h4>Resultados para "{searchValue}":</h4>
         <S.AreaFiltersMobile>
-          <Modal title="Filtrar" >
-            <FilterAside isModalFilter />
-          </Modal>
+          <Modal title="Filtrar" ><FilterAside /></Modal>
           {hasFilterSelected &&
             <ClearButton type="button" onClick={handleClearSearch}>
               Limpar Busca

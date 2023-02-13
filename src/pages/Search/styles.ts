@@ -14,6 +14,22 @@ export const Container = styled.div`
   }
 `;
 
+export const AreaFilters = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30%;
+
+  > h4 {
+    margin-bottom: 1rem;
+  }
+  /* Mobile Responsive */
+  @media (max-width: 425px) {
+    display: none;
+  }
+`;
+
 export const AreaBooks = styled.div`
   display: flex;
   flex-direction: column;

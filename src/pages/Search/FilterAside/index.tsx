@@ -3,12 +3,7 @@ import * as S from './styles';
 import { CheckboxInput } from '../../../common/CheckboxInput';
 import { useBookSearch } from '../../../hooks/useBookSearch';
 
-interface IFilterAsideProps {
-  isModalFilter?: boolean;
-}
-
-
-function FilterAside({ isModalFilter = false }: IFilterAsideProps) {
+function FilterAside() {
   const { filterValues, updateFilterValues, clearFilterValues } = useBookSearch();
 
   function handleFilter(e: React.ChangeEvent<HTMLInputElement>) {
@@ -24,8 +19,7 @@ function FilterAside({ isModalFilter = false }: IFilterAsideProps) {
   const hasFilterSelected = Object.values(filterValues).some(Boolean);
 
   return (
-    <S.Container isModalFilter={isModalFilter}>
-      <h4>Filtrar</h4>
+    <S.Container >
       {hasFilterSelected && <S.ClearButton type='button' onClick={handleClearFilter}>Limpar Filtro</S.ClearButton>}
       <p>Preço</p>
       <CheckboxInput labelText='de R$0 até R$30' value={'price0To30'} onChange={handleFilter} checked={filterValues.price0To30} />

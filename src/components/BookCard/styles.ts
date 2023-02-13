@@ -29,6 +29,8 @@ export const Title = styled.h4`
   font-weight: 600;
   color: ${({ theme }) => theme["black"]};
   margin: 0.6rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Author = styled.p`

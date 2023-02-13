@@ -17,6 +17,12 @@ export const Container = styled.aside`
     font-size: 0.8rem;
     font-weight: 500;
   }
+
+  /* Mobile Responsive */
+  @media (max-width: 425px) {
+    display: none;
+    width: 100%;
+  }
 `;
 
 export const ClearButton = styled.button`

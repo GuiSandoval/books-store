@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 120px);
+  grid-gap: 0.4rem;
+  justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 1rem;
+
+  > div {
+    margin-right: 0; //reset margin-right from BookCard
+  }
 `;
 
 export const ObserverInfiniteScroll = styled.div`

@@ -20,6 +20,11 @@ export const Container = styled.section`
     color: ${({ theme }) => theme["tea-dark-1"]};
   }
 
+  /* Desktop Responsive */
+  @media (min-width: 1025px) {
+    width: 100%;
+  }
+
   /* Tablet Responsive */
   @media (max-width: 1024px) {
     > p,

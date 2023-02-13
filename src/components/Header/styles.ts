@@ -1,26 +1,45 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "logo search profile";
   padding: 0.8rem 0;
 
-  > a > div {
-    width: 10rem;
-    height: 2rem;
-    overflow: auto;
-    overflow: hidden;
+  > a {
+    grid-area: logo;
 
-    > svg {
-      width: 100%;
-      height: 100%;
+    > div {
+      width: 10rem;
+      height: 2rem;
+      overflow: auto;
+      overflow: hidden;
+
+      > svg {
+        width: 100%;
+        height: 100%;
+      }
     }
+  }
+
+  /* Tablet Responsive */
+  @media (max-width: 1024px) {
+    grid-template-columns: 10rem 1fr 6rem;
+  }
+  /* Mobile Responsive */
+  @media (max-width: 425px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 2rem;
+    grid-template-areas:
+      "logo profile"
+      "search search";
   }
 `;
 
 export const SearchForm = styled.form`
+  grid-area: search;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -28,10 +47,12 @@ export const SearchForm = styled.form`
   align-items: center;
   width: 100%;
   max-width: 30rem;
+  margin: 0 auto;
 
   /* Mobile Responsive */
   @media (max-width: 426px) {
-    display: none;
+    /* margin: 1rem 0 0; */
+    /* max-width: 100%; */
   }
 `;
 export const SearchInput = styled.input`
@@ -55,12 +76,14 @@ export const SearchButton = styled.button`
 `;
 
 export const AreaProfile = styled.div`
+  grid-area: profile;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
   max-width: 11.6rem;
+  margin-left: auto;
 
   /* Table Responsive */
   @media (max-width: 1024px) {

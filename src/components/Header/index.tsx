@@ -27,7 +27,6 @@ function Header() {
   return (
     <S.Container>
       <Link to='/' onClick={handleHome}>
-
         <div>
           <LogoIcon />
         </div>

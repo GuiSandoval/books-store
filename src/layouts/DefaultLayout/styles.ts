@@ -14,7 +14,7 @@ export const Container = styled.div`
     padding: 0 2rem;
   }
   /* Mobile Responsive */
-  @media (max-width: 321px) {
+  @media (max-width: 425px) {
     padding: 0 1rem;
   }
 `;

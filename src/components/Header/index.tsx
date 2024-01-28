@@ -19,17 +19,14 @@ function Header() {
   }
 
   function handleHome() {
-    console.log("executou aqui mt loko")
     setSearch('')
     navigate({ pathname: '/' }, { replace: true })
   }
 
   return (
     <S.Container>
-      <Link to='/' onClick={handleHome}>
-        <div>
-          <LogoIcon />
-        </div>
+      <Link to='/' onClick={handleHome} style={{ textDecoration: 'none' }}>
+        <S.LogoText>Books Store</S.LogoText>
       </Link>
       <S.SearchForm onSubmit={handleSearch}>
         <S.SearchInput

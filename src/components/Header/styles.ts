@@ -112,3 +112,7 @@ export const AreaNotification = styled.div`
     display: none;
   }
 `;
+
+export const LogoText = styled.h1`
+  color: ${({ theme }) => theme["tea-dark-1"]};
+`;

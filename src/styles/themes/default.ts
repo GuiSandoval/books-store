@@ -1,4 +1,4 @@
-export default {
+const lightMode = {
   "gray-light-1": "#999999",
   "gray-light-2": "#dee1e6",
 
@@ -18,3 +18,26 @@ export default {
   white: "#FFF",
   black: "#000",
 };
+
+const darkMode = {
+  "gray-light-1": "#555555",
+  "gray-light-2": "#1e1e1e",
+
+  "ice-blue-1": "#657a8a",
+  "ice-blue-2": "#49555f",
+
+  "tea-light-1": "#238272",
+
+  "tea-dark-1": "#77b3b6",
+  "tea-dark-2": "#012326",
+
+  purple: "#6d3bbf",
+
+  danger: "#7e1d2a",
+
+  "white-1": "#0d1219",
+  white: "#000",
+  black: "#FFF",
+};
+
+export default darkMode;

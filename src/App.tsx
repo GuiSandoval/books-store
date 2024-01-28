@@ -5,15 +5,18 @@ import { QueryClient, QueryClientProvider, } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { Router } from './Router'
-import { defaultTheme } from './styles/themes';
+import { defaultTheme, modeTheme } from './styles/themes';
 import { GlobalStyle } from './styles/global';
 import { SearchProvider } from './contexts/SearchContext';
+import { ConfigProjectProvider, useConfigProject } from './hooks/useProjectApp';
 
 function App() {
   const queryClient = new QueryClient();
+  const { themeLayout } = useConfigProject();
+
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={modeTheme[themeLayout]}>
         {/* Usign HashRouter to deploy and using routes in githubpages */}
         <HashRouter>
           <SearchProvider>
@@ -27,4 +30,12 @@ function App() {
   )
 }
 
-export default App
+const ProjectAppProvider = () => {
+  return (
+    <ConfigProjectProvider>
+      <App />
+    </ConfigProjectProvider>
+  )
+}
+
+export default ProjectAppProvider

@@ -1,4 +1,26 @@
-const lightMode = {
+export type ThemeProps = "light" | "dark";
+interface ITheme {
+  "gray-light-1": string;
+  "gray-light-2": string;
+
+  "ice-blue-1": string;
+  "ice-blue-2": string;
+
+  "tea-light-1": string;
+
+  "tea-dark-1": string;
+  "tea-dark-2": string;
+
+  purple: string;
+
+  danger: string;
+
+  "white-1": string;
+  white: string;
+  black: string;
+}
+
+const light: ITheme = {
   "gray-light-1": "#999999",
   "gray-light-2": "#dee1e6",
 
@@ -19,7 +41,7 @@ const lightMode = {
   black: "#000",
 };
 
-const darkMode = {
+const dark: ITheme = {
   "gray-light-1": "#555555",
   "gray-light-2": "#1e1e1e",
 
@@ -40,4 +62,9 @@ const darkMode = {
   black: "#FFF",
 };
 
-export default darkMode;
+export default light;
+
+export const modeTheme: { [key in ThemeProps]: ITheme } = {
+  light,
+  dark,
+};

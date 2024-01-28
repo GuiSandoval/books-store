@@ -24,9 +24,9 @@ function BooksList() {
   return (
     <S.Container>
       {isLoading && <p>Carregando...</p>}
-      {booksFiltered?.map(book => (
+      {booksFiltered?.map((book, index) => (
         <BookCard
-          key={book.id}
+          key={`${book.id}-${index}`}
           id={book.id}
           title={book.title}
           image={book.image}
